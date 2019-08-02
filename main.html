@@ -80,7 +80,7 @@
         <div class="media-body">
           <h5 class="mt-0">
             <strong>
-              <span id="welcome"></span>, <br/><span id="userName"></span> 
+              <span id="welcome"></span>, <br/><span id="userName"></span>
             </strong>
           </h5>
           <p id="userEmail"></p>
@@ -109,10 +109,10 @@
 
         <h4>Implementação</h4>
         <p class="lead text-justify">
-            Foi utilizado no projeto as tecnologias de maior aceitação no mercado e que 
+            Foi utilizado no projeto as tecnologias de maior aceitação no mercado e que
             atendem as boas práticas do desenvolvimento web.
         </p>
-        
+
         <table class="table table-dark">
           <thead>
             <tr>
@@ -123,20 +123,140 @@
           <tbody id="tbodyRoot">
           </tbody>
         </table>
-        
+
         <hr class="my-4">
 
         <h4>Solução</h4>
         <p class="lead">
           Após a leitura do Desafio, foi feito uma verificação na Documentação do
           <a href="https://developers.google.com/adwords/api/docs/guides/authentication?hl=pt-br" target="_blank">
-            Google Authenticator
+            <i>Google Authenticator</i>
           </a>
-          em conjunto com o 
+          em conjunto com o
           <a href="https://www.youtube.com/watch?v=mVIxzH4EWmA" target="_blank">
-            Video
+            <i>Video</i>
           </a>
+          proposto no desafio.
         </p>
+
+        <p class="lead">
+          Antes de começar a programar foi necessário criar um projeto e um client ID no <i>Google Developer Console</i>.
+          Conforme sequencia abaixo:
+        </p>
+
+        <p class="lead">
+          Foi criado um projeto no <i>Google Developer Console</i>.
+        </p>
+
+        <p class="lead">
+          Dentro do projeto foi criada uma credencial de opção <i>“ID do cliente OAuth”</i>.
+        </p>
+
+        <p class="lead">
+          O tipo de aplicativo definido foi <i>“Aplicativo da Web”</i> e foi informado as origens de JavaScript autorizadas (CORS)
+        </p>
+
+
+        <div class="bd-callout bd-callout-warning">
+          <h5 id="jquery-incompatibility">Origens autorizadas</h5>
+
+          <p>
+              <code class="highlighter-rouge">http://localhost:3000</code><br/>
+              <code class="highlighter-rouge">http://localhost:5500</code><br/>
+              <code class="highlighter-rouge">https://auth-with-google.herokuapp.com</code><br/>
+              <code class="highlighter-rouge">https://herokuapp.com</code><br/>
+              <code class="highlighter-rouge">https://auth-with-google.herokuapp.com:5000</code><br/>
+              <code class="highlighter-rouge">https://auth-with-google.herokuapp.com:3000</code><br/>
+              <code class="highlighter-rouge">http://localhost:8080</code><br/>
+              <code class="highlighter-rouge">http://auth-with-google.herokuapp.com:3000</code><br/>
+              <code class="highlighter-rouge">http://auth-with-google.herokuapp.com:5000</code><br/>
+              <code class="highlighter-rouge">http://herokuapp.com</code><br/>
+              <code class="highlighter-rouge">http://auth-with-google.herokuapp.com</code>
+           </p>
+        </div>
+
+        <p class="lead">
+          Depois desses passos, foi inserido dentro da tag head do html o <i>Client ID</i>:
+        </p>
+
+        <div class="bd-callout bd-callout-warning">
+          <code class="highlighter-rouge">< meta name="google-signin-client_id" content="< CLIENT ID >"></code>
+        </div>
+
+        <p class="lead">
+          E ao final da tag body um arquivo .JS da própria plataforma Google para renderizar o botão seguindo o padrão deles.
+        </p>
+
+        <div class="bd-callout bd-callout-warning">
+          <code class="highlighter-rouge">< script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer>< /script></code>
+        </div>
+
+        <hr class="my-4">
+        <h4>Funções diretamente ligadas a autenticação do usuário</h4>
+
+        <div class="bd-callout bd-callout-warning">
+          <h5 id="jquery-incompatibility">Função de exibir o botão do Google e autenticar usuário</h5>
+
+          <p>
+              <code class="highlighter-rouge">
+                var renderButton = () => { <br/>
+                    gapi.signin2.render('btn-access', { <br/>
+                        'scope': 'email profile https://www.googleapis.com/auth/plus.login', <br/>
+                        'width': 300, <br/>
+                        'height': 40, <br/>
+                        'longtitle': true, <br/>
+                        'theme': 'dark', <br/>
+                        'onsuccess': onSuccess, <br/>
+                        'onfailure': onFailure <br/>
+                    });
+                }
+              </code>
+           </p>
+        </div>
+
+        <div class="bd-callout bd-callout-warning">
+          <h5 id="jquery-incompatibility">Função para revogar o acesso</h5>
+
+          <p>
+              <code class="highlighter-rouge">
+                function signOut() {
+                    cleanStorage();<br/>
+                    executeToken();<br/>
+                    return gapi.auth2.getAuthInstance().signOut();<br/>
+                }
+              </code>
+           </p>
+        </div>
+
+        <div class="bd-callout bd-callout-warning">
+          <h5 id="jquery-incompatibility">Função para verificar se o Token é valido</h5>
+
+          <p>
+              <code class="highlighter-rouge">
+                function checkToken() { <br/>
+                  let token = localStorage.getItem('token'); <br/>
+                  let url = `https://oauth2.googleapis.com/tokeninfo?id_token=${token}` <br/>
+
+                  return fetch(url).then(response => response.json()); <br/>
+                }
+              </code>
+           </p>
+        </div>
+
+        <hr class="my-4">
+
+        <h4>Notas</h4>
+        <p class="lead">O objetivo do desafio é realizar a autenticação de uma determinada API com um segundo fator de autenticação, no caso o Google Autheticator,
+        o Token gerado pelo mesmo foi armazenado no LocalStorage do browser para validação de acesso, assim deixando claro que não foi realizado nenhum levantamento
+        de requisitos especifico visando construir uma API com niveis de segurança e afins.</p>
+
+        <p class="lead">O código e suas dependências foram armazenados no Github para análise dos recrutarores.</p>
+
+        <p class="lead">Foi feito o deploy do projeto em um servidor gratuito (Heroku), assim permitindo a experiência de uso dos recrutadores, sem a necessidade de possuir um servidor local.</p>
+
+        <p class="lead">O projeto no Heroku estará disponivel até o fim do processo seletivo da empresa ou por pedido da mesma.</p>
+
+        <p class="lead">E por fim agradeço a oportunidade de estar participando do processo seletivo da Sensedia, e por ter a oportunidade de conhecer na prática a ferramenta proposta no desafio.</p>
       </div>
     </div>
   </body>
