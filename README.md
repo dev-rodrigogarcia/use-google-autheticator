@@ -26,17 +26,17 @@ Antes de começar a programar foi necessário criar um projeto e um client ID no
 
 ### Origens autorizadas
 
-> http://localhost:3000
-> http://localhost:5500
-> https://auth-with-google.herokuapp.com
-> https://herokuapp.com
-> https://auth-with-google.herokuapp.com:5000
-> https://auth-with-google.herokuapp.com:3000
-> http://localhost:8080
-> http://auth-with-google.herokuapp.com:3000
-> http://auth-with-google.herokuapp.com:5000
-> http://herokuapp.com
-> http://auth-with-google.herokuapp.com
+- http://localhost:3000
+- http://localhost:5500
+- https://auth-with-google.herokuapp.com
+- https://herokuapp.com
+- https://auth-with-google.herokuapp.com:5000
+- https://auth-with-google.herokuapp.com:3000
+- http://localhost:8080
+- http://auth-with-google.herokuapp.com:3000
+- http://auth-with-google.herokuapp.com:5000
+- http://herokuapp.com
+- http://auth-with-google.herokuapp.com
 
 Depois desses passos, foi inserido dentro da tag head do html o Client ID
 
