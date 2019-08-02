@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+
+    <title>Authentication with Google Authenticator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google-signin-client_id" content="741426158443-kkhukt22vla30dk1f185qbq0mi8vm536.apps.googleusercontent.com">
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./styles/access.css">
+  </head>
+
+  <body>
+    <form class="form-signin">
+      <div class="text-center" id="hasLogo">
+        <i class="fas fa-code fa-4x"></i>
+        <h4 id="isLoading">
+          <hr/>
+          <i class="fas fa-spinner fa-spin"></i>
+          Carregando
+        </h4>
+      </div>
+      <div id="isntLogged">
+        <br/>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address">
+
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password">
+
+        <div id="alert-email" style="display: none">
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <span style="font-size: 12px">
+              <strong>Desculpe!</strong> <br/>
+              Neste momento a autenticação é feita somente pelo <b>Google Authenticator</b>.
+            </span>
+            <button type="button" class="close" onclick="closeAlert()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+
+        <button type="button" name="button" id="btn-access-with-email" class="btn btn-danger btn-block" onclick="accessWithEmail()">Acessar</button>
+        <hr/>
+        <div id="btn-access"></div>
+      </div>
+
+      <div class="card mb-3" id="isLogged">
+        <div class="row no-gutters">
+          <div class="logo-user text-center">
+            <img class="card-img rounded" id="logo" alt="logo" style="width: auto" src="">
+          </div>
+
+          <div class="card-body">
+            <h5 class="card-title text-center">Existe uma conta ativa!</h5>
+
+            <hr/>
+            <dl>
+              <dt>Name</dt>
+              <dd id="userName"></dd>
+
+              <dt>Email</dt>
+              <dd id="userEmail"></dd>
+
+              <dt>Last login</dt>
+              <dd id="lastLogin"></dd>
+            </dl>
+
+            <div class="text-center">
+              <button type="button" class="btn btn-danger btn-sm" onclick="signOut();">
+                <i class="fas fa-sign-out-alt"></i>
+                Sign out
+              </button>
+
+              <button type="button" class="btn btn-primary btn-sm" onclick="signIn()">
+                <i class="fas fa-sign-in-alt"></i>
+                Sign in&nbsp;
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-5 mb-3 text-muted text-center">Desafio <b>Sensedia</b> - 2019</p>
+    </form>
+  </body>
+
+
+  <script src="./scripts/script.js"></script>
+
+  <!--Google Platform Library-->
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
+  <!--JQuery e Bootstrap - Não são obrigatórios para ao autenticação -->
+  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</html>

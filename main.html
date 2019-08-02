@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+
+    <title>Authentication with Google Authenticator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google-signin-client_id" content="741426158443-kkhukt22vla30dk1f185qbq0mi8vm536.apps.googleusercontent.com">
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./styles/main.css">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-code fa-2x" aria-hidden="true"></i>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#home">
+              <i class="fas fa-home" aria-hidden="true"></i>
+              Home
+            </a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="#problem">
+              <i class="fas fa-exclamation-circle"></i>
+              Problem
+            </a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="#presentation">
+              <i class="fas fa-comment-alt"></i>
+              Presentation
+            </a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="https://github.com/dev-rodrigogarcia" target="_blank">
+              <i class="fab fa-github" aria-hidden="true"></i>
+              Github
+            </a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="https://www.linkedin.com/in/rodrigogarciadossantos/" target="_blank">
+              <i class="fab fa-linkedin" aria-hidden="true"></i>
+              Linkedin
+            </a>
+          </li>
+        </ul>
+
+        <form class="form-inline">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" onclick="signOut()" data-toggle="tooltip" data-placement="bottom" title="Revogar acesso">
+                <i class="fas fa-sign-out-alt"></i>
+                Sign out
+              </a>
+            </li>
+          </ul>
+        </form>
+      </div>
+    </nav>
+
+    <div class="jumbotron-dark" id="home">
+      <div class="media container" style="padding: 25px 16px;">
+        <img src="" class="mr-3 img-thumbnail" alt="img user" id="userImage">
+        <div class="media-body">
+          <h5 class="mt-0">
+            <strong>
+              <span id="welcome"></span>, <br/><span id="userName"></span> 
+            </strong>
+          </h5>
+          <p id="userEmail"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="jumbotron" id="problem" style="background-color: #fff!important;">
+      <div class="container">
+        <h1 class="display-4">
+          <i class="fas fa-exclamation-circle"></i>
+          Problema
+        </h1>
+        <p class="lead text-justify">
+          O nosso cliente solicita que autenticação de uma determinada API seja realizada com segundo fator de autenticação usando Google Authenticator.
+        </p>
+      </div>
+    </div>
+
+    <div class="jumbotron jumbotron-dark" id="presentation">
+      <div class="container">
+        <h1 class="display-4">
+          <i class="far fa-comment-alt"></i>
+          Apresentação
+        </h1><br/>
+
+        <h4>Implementação</h4>
+        <p class="lead text-justify">
+            Foi utilizado no projeto as tecnologias de maior aceitação no mercado e que 
+            atendem as boas práticas do desenvolvimento web.
+        </p>
+        
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th scope="col">ICON</th>
+              <th scope="col">NAME</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyRoot">
+          </tbody>
+        </table>
+        
+        <hr class="my-4">
+
+        <h4>Solução</h4>
+        <p class="lead">
+          Após a leitura do Desafio, foi feito uma verificação na Documentação do
+          <a href="https://developers.google.com/adwords/api/docs/guides/authentication?hl=pt-br" target="_blank">
+            Google Authenticator
+          </a>
+          em conjunto com o 
+          <a href="https://www.youtube.com/watch?v=mVIxzH4EWmA" target="_blank">
+            Video
+          </a>
+        </p>
+      </div>
+    </div>
+  </body>
+
+  <script src="./scripts/script.js"></script>
+  <script src="./scripts/main.js"></script>
+
+  <!--Google Platform Library-->
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
+  <!--JQuery e Bootstrap - Não são obrigatórios para ao autenticação -->
+  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</html>

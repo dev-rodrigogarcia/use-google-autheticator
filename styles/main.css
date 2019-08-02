@@ -1,0 +1,25 @@
+body {
+    padding-top: 60px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.jumbotron-dark {
+    background: linear-gradient(to right, rgb(33, 147, 176), rgb(109, 213, 237))!important;
+    color: #fff;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.14), 0 0 2px 2px rgba(0, 0, 0, 0.098), 0 0 5px 1px rgba(0, 0, 0, 0.084);
+}
+
+.jumbotron {
+    margin-bottom: 0rem;
+}
+
+.line-divider {
+    border-bottom: 3px dashed #a0a0a0;
+    width: 90%;
+    margin: auto;
+}
+
+.lead > a {
+    color: #000;
+    font-weight: 800;
+}
