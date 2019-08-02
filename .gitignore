@@ -1,1 +1,3 @@
-node_modules/
+# Permitir envio do node_module para utilização no Heroku
+
+# node_modules/
